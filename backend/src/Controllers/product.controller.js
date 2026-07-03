@@ -4,9 +4,9 @@ import asyncHandler from '../utils/asyncHandler.js';
 import fs from 'fs';
 
 export const createProduct = asyncHandler(async (req, res, next) => {
-  const { name, description, price, category } = req.body;
+  const { name, description, price, category, stock } = req.body;
 
-  if (!name || !description || !price || !category) {
+  if (!name || !description || !price || !category || !stock) {
     return next(new AppError('All fields are required', 400));
   }
   let images = [];
@@ -20,6 +20,7 @@ export const createProduct = asyncHandler(async (req, res, next) => {
     price,
     category,
     images,
+    stock,
     createdBy: req.user._id,
   });
 

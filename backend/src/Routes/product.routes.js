@@ -11,7 +11,7 @@ productRouter
   .route('/')
   .get(
     protect,
-    authorizedRoles('Customer', 'Admin'),
+    authorizedRoles('Customer', "Seller", 'Admin'),
     productController.getAllProducts,
   );
 
